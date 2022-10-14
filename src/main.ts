@@ -4,5 +4,6 @@ import "./registerServiceWorker";
 import router from "./router";
 import { store, key } from "@/store";
 import "@/style.css";
+import "@/assets/simple-grid.scss";
 
 createApp(App).use(store, key).use(router).mount("#app");
