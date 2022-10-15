@@ -3,15 +3,7 @@
     class="fixed w-[90vw] mx-auto pt-3 flex justify-between items-center z-50 navbar-blur left-0 right-0"
   >
     <h2 class="font-overpass text-main text-xl font-semibold">e-Sąsiad</h2>
-    <div class="flex w-1/6 justify-around">
-      <router-link to="/aboutus">
-        <p class="font-overpass text-main text-lg font-medium">O nas</p>
-      </router-link>
-      <router-link to="/contact">
-        <p class="font-overpass text-main text-lg font-medium">Kontakt</p>
-      </router-link>
-    </div>
-    <div class="flex w-1/5 justify-around invisible sm:visible">
+    <div class="flex w-1/5 justify-between invisible sm:visible">
       <router-link to="/login">
         <p
           class="font-overpass text-lg font-normal px-6 py-3 rounded-3xl bg-orange"
