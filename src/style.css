@@ -1,0 +1,139 @@
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Helping classes ===== */
+h1,
+h2,
+h3,
+p {
+    @apply text-center sm:text-left
+}
+
+h1 {
+    @apply font-semibold text-[2.8125em] xl:text-[3.75em] 2xl:text-[4em];
+}
+
+h2 {
+    @apply font-semibold text-center sm:text-left text-lg;
+}
+
+h3 {
+    @apply font-medium text-base;
+}
+
+p {
+    @apply text-base;
+}
+
+p.title {
+    @apply text-lg;
+}
+
+.background-gradient {
+    background-color: hsla(166,33%,51%,1);
+    background-image:
+            radial-gradient(at 13% 43%, hsla(152,48%,65%,1) 0px, transparent 50%),
+            radial-gradient(at 66% 52%, hsla(122,46%,65%,1) 0px, transparent 50%),
+            radial-gradient(at 88% 16%, hsla(90,46%,64%,1) 0px, transparent 50%),
+            radial-gradient(at 4% 6%, hsla(172,47%,63%,1) 0px, transparent 50%),
+            radial-gradient(at 19% 100%, hsla(169,44%,36%,1) 0px, transparent 50%);
+}
+
+.navbar-blur {
+    backdrop-filter: blur(3px);
+}
+
+.transparent-black {
+    @apply text-[#000000] opacity-50
+}
+
+.home-image {
+    @apply absolute z-20 w-[40vw] xl:top-[20%] 2xl:top-[10%] left-[55%] right-0 invisible sm:visible
+}
+
+.home-image-div {
+   @apply absolute -top-10 left-0 right-0 w-screen h-[200vh]
+}
+
+.view {
+    @apply mx-[5%] sm:mx-[6%];
+}
+
+.top {
+    @apply pt-10;
+}
+.polygon {
+    -webkit-clip-path: polygon(0 40%, 100% 25%, 100% 100%, 0 85%);
+    clip-path: polygon(0 40%, 100% 25%, 100% 100%, 0 85%);
+}
+
+.polygon2 {
+    -webkit-clip-path: polygon(0 25%, 100% 34%, 100% 100%, 0% 100%);
+    clip-path: polygon(0 25%, 100% 34%, 100% 100%, 0% 100%);
+}
+
+/* ===== Scrollbar ===== */
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #fddf92 #f7f7f7;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #f7f7f7;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #fddf92;
+    border-radius: 10px;
+}
+
+/* ===== Reset classes ===== */
+body {
+    margin: 0;
+    font-family: Overpass, sans-serif;
+}
+
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, select {
+    all: unset;
+}
