@@ -30,4 +30,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           dry-run: false
           local-dir: dist/
-          server-dir: public_html/beta
+          server-dir: public_html/beta/
