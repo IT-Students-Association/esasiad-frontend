@@ -3,12 +3,23 @@
 @tailwind utilities;
 
 /* ===== Helping classes ===== */
+h1,
+h2,
+h3,
+p {
+    @apply text-center sm:text-left
+}
+
 h1 {
     @apply font-semibold text-[2.8125em] xl:text-[3.75em] 2xl:text-[4em];
 }
 
 h2 {
-    @apply font-medium text-base xl:text-lg 2xl:text-[1.5em];
+    @apply font-semibold text-center sm:text-left text-lg;
+}
+
+h3 {
+    @apply font-medium text-base;
 }
 
 p {
@@ -33,12 +44,16 @@ p.title {
     backdrop-filter: blur(3px);
 }
 
+.transparent-black {
+    @apply text-[#000000] opacity-50
+}
+
 .home-image {
     @apply absolute z-20 w-[40vw] xl:top-[20%] 2xl:top-[10%] left-[55%] right-0 invisible sm:visible
 }
 
 .home-image-div {
-   @apply absolute -top-10 left-0 right-0 w-screen h-[140vh]
+   @apply absolute -top-10 left-0 right-0 w-screen h-[200vh]
 }
 
 .view {
@@ -49,8 +64,13 @@ p.title {
     @apply pt-10;
 }
 .polygon {
-    -webkit-clip-path: polygon(0 40%, 100% 25%, 100% 100%, 0 100%);
-    clip-path: polygon(0 40%, 100% 25%, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 40%, 100% 25%, 100% 100%, 0 85%);
+    clip-path: polygon(0 40%, 100% 25%, 100% 100%, 0 85%);
+}
+
+.polygon2 {
+    -webkit-clip-path: polygon(0 25%, 100% 34%, 100% 100%, 0% 100%);
+    clip-path: polygon(0 25%, 100% 34%, 100% 100%, 0% 100%);
 }
 
 /* ===== Scrollbar ===== */
@@ -77,6 +97,7 @@ p.title {
 /* ===== Reset classes ===== */
 body {
     margin: 0;
+    font-family: Overpass, sans-serif;
 }
 
 p,
