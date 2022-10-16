@@ -9,6 +9,8 @@ module.exports = {
       accent2: "#FDDF92",
       white: "#F7F7F7",
       orange: "#D2D271",
+      black: "#000000",
+      purewhite: "#FFFFFF",
     },
     fontFamily: {
       overpass: ["Overpass", "sans-serif"],
