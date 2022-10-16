@@ -1,4 +1,4 @@
-  name: Deploy main website on push
+name: Deploy main website on push
 
 on:
   push:
@@ -30,4 +30,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           dry-run: false
           local-dir: dist/
-          server-dir: public_html
+          server-dir: public_html/
