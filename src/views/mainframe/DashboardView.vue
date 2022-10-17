@@ -1,6 +1,4 @@
-<template>
-  haha hihi
-</template>
+<template>haha hihi</template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
