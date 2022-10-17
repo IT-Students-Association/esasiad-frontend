@@ -3,6 +3,35 @@ import HomeView from "@/views/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: "/app",
+    name: "Mainframe",
+    component: () => import("@/views/mainframe/index.vue"),
+    children: [
+      {
+        path: "",
+        name: "Home",
+        component: () => import("@/views/mainframe/HomeView.vue"),
+      },
+      {
+        path: "dashboard",
+        name: "Dashboard",
+        component: () => import("@/views/mainframe/DashboardView.vue"),
+      },
+      {
+        path: "admin",
+        name: "Admin",
+        component: () => import("@/views/mainframe/admin/index.vue"),
+        children: [
+          {
+            path: "",
+            name: "Admin",
+            component: () => import("@/views/mainframe/admin/AdminView.vue"),
+          },
+        ],
+      },
+    ],
+  },
+  {
     path: "/",
     name: "Home",
     component: HomeView,
@@ -10,7 +39,7 @@ const routes: Array<RouteRecordRaw> = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(""),
   routes,
 });
 
