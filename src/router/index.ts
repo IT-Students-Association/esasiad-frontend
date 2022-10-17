@@ -41,6 +41,11 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(""),
   routes,
+  scrollBehavior() {
+    window.scrollTo(0, 0);
+  },
 });
+
+// TODO: add meta tags and make /app disabled if not logged in
 
 export default router;
