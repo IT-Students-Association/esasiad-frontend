@@ -32,7 +32,10 @@ export const store = createStore<State>({
     login({ commit }, formData) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          if (formData.email == "test@test.pl" && formData.password == "admin") {
+          if (
+            formData.email == "test@test.pl" &&
+            formData.password == "admin"
+          ) {
             commit("setAuth", true);
             resolve(true);
           } else {

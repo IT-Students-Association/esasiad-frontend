@@ -5,29 +5,29 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/app",
     name: "Mainframe",
-    component: () => import("@/views/mainframe/index.vue"),
+    component: () => import("@/views/Mainframe/index.vue"),
     children: [
-      {
-        path: "",
-        name: "Home",
-        component: () => import("@/views/mainframe/HomeView.vue"),
-      },
-      {
-        path: "dashboard",
-        name: "Dashboard",
-        component: () => import("@/views/mainframe/DashboardView.vue"),
-      },
       {
         path: "admin",
         name: "Admin",
-        component: () => import("@/views/mainframe/admin/index.vue"),
+        component: () => import("@/views/Mainframe/admin/index.vue"),
         children: [
           {
             path: "",
             name: "Admin",
-            component: () => import("@/views/mainframe/admin/AdminView.vue"),
+            component: () => import("@/views/Mainframe/admin/AdminView.vue"),
           },
         ],
+      },
+      {
+        path: "",
+        name: "Mainframe-home",
+        component: () => import("@/views/Mainframe/HomeView.vue"),
+      },
+      {
+        path: "dashboard",
+        name: "Dashboard",
+        component: () => import("@/views/Mainframe/DashboardView.vue"),
       },
     ],
   },
