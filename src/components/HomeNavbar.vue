@@ -23,39 +23,69 @@
     <div
       class="bg-opacity-70 bg-[#000000] w-screen h-screen flex justify-center items-center"
     >
-      <div class="form bg-[#F7F7F7] p-10">
-        <h2 class="text-center text-2xl text-main">Zaloguj się</h2>
-        <form class="flex flex-col gap-1">
-          <div class="flex w-full items-center justify-center">
-            <label for="email" class="mr-4 text-lg">Email</label>
-            <input id="email" class="input" type="email" />
+      <div
+        class="bg-opacity-70 bg-[#000000] w-screen h-screen flex justify-center items-center"
+      >
+        <div class="form bg-[#F7F7F7] p-10 rounded-2xl w-2/3 sm:w-1/3">
+          <div class="flex items-start w-full">
+            <h2 class="text-center text-xl sm:text-2xl text-main mx-auto mb-5">
+              Zaloguj się
+            </h2>
+            <button @click="closeModalLogin">
+              <img
+                class="w-8"
+                src="@/assets/icons/cross-1.svg"
+                alt="close icon"
+              />
+            </button>
           </div>
-          <div class="flex w-full items-center justify-center">
-            <label for="password" class="mr-4 text-lg">Hasło</label>
-            <div class="input">
+          <form class="flex flex-col items-center gap-2">
+            <div
+              class="flex flex-row-reverse w-full items-center justify-center"
+            >
               <input
-                id="password"
-                type="password"
-                autocomplete="current-password"
+                id="email"
+                class="peer input"
+                type="email"
+                placeholder=" "
               />
-              <img
-                class="hidden w-5"
-                id="eye-open"
-                src="@/assets/icons/eye-open.svg"
-                alt="eye open - password visible"
-                @click="changePasswordVisibility()"
-              />
-              <img
-                class="w-5"
-                id="eye-closed"
-                src="@/assets/icons/eye-closed.svg"
-                alt="eye closed - password not visible"
-                @click="changePasswordVisibility()"
-              />
+              <label for="email" class="mr-4 text-lg">Email</label>
             </div>
-          </div>
-        </form>
-        <button @click="closeModalLogin">close</button>
+            <div
+              class="flex flex-row-reverse w-full items-center justify-center"
+            >
+              <div class="input flex justify-around">
+                <input
+                  class="peer w-full"
+                  id="password"
+                  type="password"
+                  autocomplete="new-password"
+                  placeholder=" "
+                />
+                <label for="password" class="!mt-[1px] text-lg block sm:hidden"
+                  >Hasło</label
+                >
+                <img
+                  class="hidden w-5"
+                  id="eye-open"
+                  src="@/assets/icons/eye-open.svg"
+                  alt="eye open - password visible"
+                  @click="changePasswordVisibility()"
+                />
+                <img
+                  class="w-5"
+                  id="eye-closed"
+                  src="@/assets/icons/eye-closed.svg"
+                  alt="eye closed - password not visible"
+                  @click="changePasswordVisibility()"
+                />
+              </div>
+              <label for="password" class="mr-4 text-lg hidden sm:block"
+                >Hasło</label
+              >
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </Modal>
@@ -63,26 +93,46 @@
     <div
       class="bg-opacity-70 bg-[#000000] w-screen h-screen flex justify-center items-center"
     >
-      <div class="form bg-[#F7F7F7] p-10 w-4/12">
-        <h2 class="text-center text-2xl text-main">Zarejestruj się</h2>
+      <div class="form bg-[#F7F7F7] p-10 rounded-2xl w-2/3 sm:w-1/3">
+        <div class="flex items-start w-full">
+          <h2 class="text-center text-xl sm:text-2xl text-main mx-auto mb-5">
+            Zarejestruj się
+          </h2>
+          <button @click="closeModalRegister">
+            <img
+              class="w-8"
+              src="@/assets/icons/cross-1.svg"
+              alt="close icon"
+            />
+          </button>
+        </div>
         <form class="flex flex-col items-end gap-2">
-          <div class="flex w-full items-center justify-end">
-            <label for="name" class="mr-4 text-lg">Imię i nazwisko</label>
-            <input id="name" class="input" type="text" />
+          <div class="flex flex-row-reverse w-full items-center justify-end">
+            <input id="name" class="peer input" type="text" placeholder=" " />
+            <label for="name" class="mr-4 text-lg"> Imię i nazwisko </label>
+          </div>
+          <div class="flex flex-row-reverse w-full items-center justify-end">
+            <input id="email" class="peer input" type="email" placeholder=" " />
+            <label for="email" class="mr-4 text-lg"> Email </label>
           </div>
           <div class="flex w-full items-center justify-end">
-            <label for="email" class="mr-4 text-lg">Email</label>
-            <input id="email" class="input" type="email" />
-          </div>
-          <div class="flex w-full items-center justify-end">
-            <label for="password" class="mr-4 text-lg">Hasło</label>
+            <label for="password" class="mr-4 text-lg hidden sm:block">
+              Hasło
+            </label>
             <div class="input flex justify-around">
               <input
-                class="w-full"
+                class="peer w-full"
                 id="password"
                 type="password"
                 autocomplete="new-password"
+                placeholder=" "
               />
+              <label
+                for="password"
+                class="!mt-[1px] text-lg block sm:hidden peer-focus:!mt-1"
+              >
+                Hasło
+              </label>
               <img
                 class="hidden w-5"
                 id="eye-open"
@@ -100,7 +150,6 @@
             </div>
           </div>
         </form>
-        <button @click="closeModalRegister">close</button>
       </div>
     </div>
   </Modal>
@@ -161,6 +210,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .input {
-  @apply h-6 bg-purewhite px-4 py-2 border-2 border-solid border-main rounded-md shadow-sm focus:outline-none focus:ring-8 focus:ring-accent2;
+  @apply h-6 mt-2 w-full sm:w-1/2 bg-white px-4 py-2 border-2 border-solid border-main rounded-md shadow-sm focus:outline-none invalid:border-error;
+}
+
+label {
+  @apply mt-3 absolute sm:relative bg-white text-sm sm:text-lg -translate-y-5 sm:translate-y-0 bg-white transition-all left-20 sm:left-0  font-light sm:peer-focus:bg-none peer-invalid:text-error peer-focus:text-sm sm:peer-focus:text-lg peer-focus:-translate-y-5 sm:peer-focus:translate-y-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base sm:peer-placeholder-shown:text-lg;
 }
 </style>

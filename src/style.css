@@ -1,4 +1,4 @@
-@tailwind preflight;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -7,7 +7,7 @@ h1,
 h2,
 h3,
 p {
-    @apply text-center sm:text-left
+    @apply text-center sm:text-left;
 }
 
 h1 {
@@ -95,6 +95,11 @@ p.title {
 }
 
 /* ===== Reset classes ===== */
+* {
+    line-height: unset !important;
+    box-sizing: unset !important;
+}
+
 body {
     margin: 0;
     font-family: Overpass, sans-serif;

@@ -11,6 +11,7 @@ module.exports = {
       orange: "#D2D271",
       black: "#000000",
       purewhite: "#FFFFFF",
+      error: "#902923",
     },
     fontFamily: {
       overpass: ["Overpass", "sans-serif"],
