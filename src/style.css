@@ -51,7 +51,7 @@ p.title {
     backdrop-filter: blur(3px);
 }
 .nav-icons {
-    @apply  z-20 w-1/12 ml-auto
+    @apply  z-20 w-1/12 h-auto ml-auto
 }
 
 .transparent-black {
