@@ -84,6 +84,13 @@
                 >Hasło</label
               >
             </div>
+            <p
+              @click="showModalRegister"
+              class="cursor-pointer text-center text-main2"
+            >
+              Nie masz jeszcze konta? Zarejestruj się
+            </p>
+            <button @click="authLogin" class="submit">Zaloguj się</button>
           </form>
         </div>
       </div>
@@ -106,12 +113,12 @@
             />
           </button>
         </div>
-        <form class="flex flex-col items-end gap-2">
-          <div class="flex flex-row-reverse w-full items-center justify-end">
+        <form class="flex flex-col items-center gap-2">
+          <div class="flex flex-row-reverse w-full items-center">
             <input id="name" class="peer input" type="text" placeholder=" " />
             <label for="name" class="mr-4 text-lg"> Imię i nazwisko </label>
           </div>
-          <div class="flex flex-row-reverse w-full items-center justify-end">
+          <div class="flex flex-row-reverse w-full items-center">
             <input id="email" class="peer input" type="email" placeholder=" " />
             <label for="email" class="mr-4 text-lg"> Email </label>
           </div>
@@ -149,6 +156,7 @@
               />
             </div>
           </div>
+          <button @click="authRegister" class="submit">Dołącz</button>
         </form>
       </div>
     </div>
@@ -165,12 +173,12 @@ export default defineComponent({
     const isShowLogin = ref(false);
     const isShowRegister = ref(false);
     function showModalLogin() {
-      isShowLogin.value = true;
       isShowRegister.value = false;
+      isShowLogin.value = true;
     }
     function showModalRegister() {
-      isShowRegister.value = true;
       isShowLogin.value = false;
+      isShowRegister.value = true;
     }
     function closeModalLogin() {
       isShowLogin.value = false;
@@ -204,6 +212,12 @@ export default defineComponent({
         eyeClosed.style.display = "block";
       }
     },
+    authLogin() {
+      alert("logowanie");
+    },
+    authRegister() {
+      alert("rejestracja");
+    },
   },
 });
 </script>
@@ -215,5 +229,9 @@ export default defineComponent({
 
 label {
   @apply mt-3 absolute sm:relative bg-white text-sm sm:text-lg -translate-y-5 sm:translate-y-0 bg-white transition-all left-20 sm:left-0  font-light sm:peer-focus:bg-none peer-invalid:text-error peer-focus:text-sm sm:peer-focus:text-lg peer-focus:-translate-y-5 sm:peer-focus:translate-y-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base sm:peer-placeholder-shown:text-lg;
+}
+
+button.submit {
+  @apply w-full sm:w-1/3 h-7 pt-3 bg-main text-white text-base text-center py-2 rounded-md shadow-sm hover:bg-main2 hover:shadow-lg transition-all;
 }
 </style>
