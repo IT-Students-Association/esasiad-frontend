@@ -3,33 +3,6 @@
 @tailwind utilities;
 
 /* ===== Helping classes ===== */
-h1,
-h2,
-h3,
-p {
-    @apply text-center sm:text-left;
-}
-
-h1 {
-    @apply font-semibold text-[2.8125em] xl:text-[3.75em] 2xl:text-[4em];
-}
-
-h2 {
-    @apply font-semibold text-center sm:text-left text-lg;
-}
-
-h3 {
-    @apply font-medium text-base;
-}
-
-p {
-    @apply text-base;
-}
-
-p.title {
-    @apply text-lg;
-}
-
 .background-gradient {
     background-color: hsla(166,33%,51%,1);
     background-image:
@@ -40,8 +13,19 @@ p.title {
             radial-gradient(at 19% 100%, hsla(169,44%,36%,1) 0px, transparent 50%);
 }
 
+.background-mainframe {
+    background-color:hsla(160,88%,92%,1);
+    background-image:
+            radial-gradient(at 92% 12%, hsla(86,68%,86%,1) 0px, transparent 50%),
+            radial-gradient(at 10% 86%, hsla(161,100%,80%,1) 0px, transparent 50%);
+}
+
 .navbar-blur {
     backdrop-filter: blur(3px);
+}
+
+.nav-icons {
+    @apply  z-20 w-1/12 h-auto ml-auto
 }
 
 .transparent-black {
