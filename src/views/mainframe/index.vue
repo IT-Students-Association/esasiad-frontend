@@ -1,10 +1,14 @@
 <template>
   <MainNavbar />
   <div
-    class="w-screen h-screen relative w-screen background-mainframe overflow-x-hidden"
+    class="flex items-end w-screen h-screen relative w-screen background-mainframe overflow-x-hidden"
   >
-    <AppSidebar />
-    <router-view />
+    <div class="flex flex-wrap w-full frame mx-16">
+      <AppSidebar />
+      <div class="overflow-y-scroll">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,4 +26,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped>
+.frame {
+  height: calc(100vh - 6rem);
+}
+</style>
