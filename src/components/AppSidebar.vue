@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-col justify-between w-1/5 mb-5">
+  <div
+    class="mt-3 flex flex-col justify-evenly transition-all w-1/3 lg:w-1/3 xl:w-1/4 2xl:w-1/5 mb-5"
+  >
     <div class="box">
       <div class="header flex gap-2 box-padding">
         <input
@@ -32,24 +34,26 @@
       <div class="header flex box-padding">
         <h2>O Tobie</h2>
       </div>
-      <div class="flex flex-col items-center justify-center box-padding">
+      <p
+        class="mt-2 ml-auto mr-auto w-2/3 pt-2 pb-1 bg-accent2 text-center rounded-xl font-light"
+      >
+        Początkujący Sąsiad | 40 pkt
+      </p>
+      <div class="flex items-center justify-center box-padding">
         <img
           src="@/assets/icons/user.svg"
-          class="mt-2 h-40 w-auto"
+          class="mt-2 h-32 w-auto"
           alt="user"
         />
-        <p
-          class="w-10/12 pt-3 pb-2 bg-accent2 text-center rounded-xl font-light"
-        >
-          Początkujący Sąsiad | 40 pkt
-        </p>
-        <div class="mt-3 w-full text-center">
-          <p class="!text-base font-light">user@user.pl</p>
-          <h2>Użytkownik Iksiński</h2>
-        </div>
-        <div class="mt-3 w-full text-center">
-          <p class="!text-base font-light">Tak trzymaj!</p>
-          <h2>Użytkownik, jesteś 79. w rankingu osiedlowym</h2>
+        <div>
+          <div class="mt-3 w-full text-center">
+            <p class="font-light">user@user.pl</p>
+            <p>Użytkownik Iksiński</p>
+          </div>
+          <div class="mt-3 w-full text-center">
+            <p class="font-light">Tak trzymaj!</p>
+            <p>Użytkownik, jesteś 79. w rankingu osiedlowym</p>
+          </div>
         </div>
       </div>
     </div>
@@ -87,14 +91,6 @@ p {
 h2,
 input {
   @apply text-base font-normal  placeholder:font-normal;
-}
-
-.box {
-  @apply bg-white rounded-2xl pb-3;
-  box-shadow: 0 190px 76px rgba(0, 0, 0, 0.01), 0 107px 64px rgba(0, 0, 0, 0.05),
-    0 47px 47px rgba(0, 0, 0, 0.09), 0 12px 26px rgba(0, 0, 0, 0.1),
-    0 0 0 rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(7.5px);
 }
 
 .box-padding {
