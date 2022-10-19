@@ -21,8 +21,23 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: "",
-        name: "mainframe-home",
-        component: () => import("@/views/mainframe/HomeView.vue"),
+        name: "Community",
+        component: () => import("@/views/mainframe/CommunityView.vue"),
+      },
+      {
+        path: "help",
+        name: "Help",
+        component: () => import("@/views/mainframe/HelpView.vue"),
+      },
+      {
+        path: "ranking",
+        name: "Ranking",
+        component: () => import("@/views/mainframe/RankingView.vue"),
+      },
+      {
+        path: "fault",
+        name: "Fault",
+        component: () => import("@/views/mainframe/FaultView.vue"),
       },
       {
         path: "dashboard",
