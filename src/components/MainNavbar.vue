@@ -5,12 +5,18 @@
     <div class="flex w-[90%] justify-between items-center">
       <h2 class="text-main text-xl font-semibold">e-Sąsiad</h2>
       <div class="flex sm:w-1/3 justify-evenly">
-        <p>Społeczność</p>
-        <router-link to="/help">
+        <router-link to="/app" id="community">
+          <p>Społeczność</p>
+        </router-link>
+        <router-link to="/app/help" id="help">
           <p>Pomoc</p>
         </router-link>
-        <p>Zgłoś usterkę</p>
-        <p>Ranking</p>
+        <router-link to="/app/fault" id="fault">
+          <p>Zgłoś usterkę</p>
+        </router-link>
+        <router-link to="/app/ranking" id="ranking">
+          <p>Ranking</p>
+        </router-link>
       </div>
       <div class="flex sm:w-2/12">
         <img src="@/assets/icons/notifs.png" class="nav-icons" />
@@ -27,4 +33,16 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped>
+p {
+  @apply text-base;
+}
+
+a:not(.router-link-exact-active) {
+  @apply hover:font-medium transition-all;
+}
+
+.router-link-exact-active {
+  @apply font-semibold text-main2 transition-all;
+}
+</style>

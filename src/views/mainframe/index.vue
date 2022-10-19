@@ -1,17 +1,22 @@
 <template>
   <MainNavbar />
-  <router-view />
-  <div class="sidebar bg-[#F7F7F7] w-72">hahahahaahahahahhahhhhh</div>
-  <div class="sidebar bg-[#F7F7F7] right-0 w-80"></div>
+  <div
+    class="w-screen h-screen relative w-screen background-mainframe overflow-x-hidden"
+  >
+    <AppSidebar />
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import MainNavbar from "@/components/MainNavbar.vue"; // tu zmienić na MainNavbar po zrobieniu navbara
+import MainNavbar from "@/components/MainNavbar.vue";
+import AppSidebar from "@/components/AppSidebar.vue";
 
 export default defineComponent({
   name: "MainframeController",
   components: {
+    AppSidebar,
     MainNavbar,
   },
 });
