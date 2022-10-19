@@ -5,9 +5,7 @@
       <div class="row z-20">
         <div class="col-1" />
         <div class="col-4">
-          <h1
-            class="transparent-black text-center w-screen w-full sm:text-left"
-          >
+          <h1 class="transparent-black text-center sm:text-left">
             Zbuduj z nami nowoczesne sąsiedztwa.
           </h1>
         </div>
