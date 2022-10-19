@@ -4,7 +4,7 @@
   >
     <div class="flex w-[90%] justify-between items-center">
       <h2 class="text-main text-xl font-semibold">e-Sąsiad</h2>
-      <div class="flex sm:w-1/3 justify-evenly">
+      <div class="flex gap-5 justify-evenly">
         <router-link to="/app" id="community">
           <p>Społeczność</p>
         </router-link>
