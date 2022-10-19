@@ -206,4 +206,31 @@ export default defineComponent({
 });
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="scss" scoped>
+h1,
+h2,
+h3,
+p {
+  @apply text-center sm:text-left;
+}
+
+h1 {
+  @apply font-semibold text-[2.8125em] xl:text-[3.75em] 2xl:text-[4em];
+}
+
+h2 {
+  @apply font-semibold text-center sm:text-left text-lg;
+}
+
+h3 {
+  @apply font-medium text-base;
+}
+
+p {
+  @apply text-base;
+}
+
+p.title {
+  @apply text-lg;
+}
+</style>

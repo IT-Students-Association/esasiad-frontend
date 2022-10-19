@@ -3,33 +3,6 @@
 @tailwind utilities;
 
 /* ===== Helping classes ===== */
-h1,
-h2,
-h3,
-p {
-    @apply text-center sm:text-left
-}
-
-h1 {
-    @apply font-semibold text-[2.8125em] xl:text-[3.75em] 2xl:text-[4em];
-}
-
-h2 {
-    @apply font-semibold text-center sm:text-left text-lg;
-}
-
-h3 {
-    @apply font-medium text-base;
-}
-
-p {
-    @apply text-base;
-}
-
-p.title {
-    @apply text-lg;
-}
-
 .background-gradient {
     background-color: hsla(166,33%,51%,1);
     background-image:
@@ -50,6 +23,7 @@ p.title {
 .navbar-blur {
     backdrop-filter: blur(3px);
 }
+
 .nav-icons {
     @apply  z-20 w-1/12 h-auto ml-auto
 }
@@ -81,10 +55,6 @@ p.title {
 .polygon2 {
     -webkit-clip-path: polygon(0 25%, 100% 34%, 100% 100%, 0% 100%);
     clip-path: polygon(0 25%, 100% 34%, 100% 100%, 0% 100%);
-}
-
-.sidebar{
-    @apply fixed h-full top-28
 }
 
 /* ===== Scrollbar ===== */
