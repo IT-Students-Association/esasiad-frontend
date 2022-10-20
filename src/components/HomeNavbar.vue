@@ -39,7 +39,10 @@
               />
             </button>
           </div>
-          <form class="flex flex-col items-center gap-2">
+          <form
+            class="flex flex-col items-center gap-2"
+            @submit.prevent="authLogin"
+          >
             <div
               class="flex flex-row-reverse w-full items-center justify-center"
             >
@@ -48,6 +51,7 @@
                 class="peer input"
                 type="email"
                 placeholder=" "
+                v-model="email"
               />
               <label for="email" class="mr-4 text-lg">Email</label>
             </div>
@@ -61,6 +65,7 @@
                   type="password"
                   autocomplete="new-password"
                   placeholder=" "
+                  v-model="password"
                 />
                 <label for="password" class="!mt-[1px] text-lg block sm:hidden"
                   >Hasło</label
@@ -90,7 +95,7 @@
             >
               Nie masz jeszcze konta? Zarejestruj się
             </p>
-            <button @click="authLogin" class="submit">Zaloguj się</button>
+            <button type="submit" class="submit">Zaloguj się</button>
           </form>
         </div>
       </div>
@@ -113,13 +118,28 @@
             />
           </button>
         </div>
-        <form class="flex flex-col items-center gap-2">
+        <form
+          class="flex flex-col items-center gap-2"
+          @submit.prevent="authRegister"
+        >
           <div class="flex flex-row-reverse w-full items-center">
-            <input id="name" class="peer input" type="text" placeholder=" " />
+            <input
+              id="name"
+              class="peer input"
+              type="text"
+              placeholder=" "
+              v-model="name"
+            />
             <label for="name" class="mr-4 text-lg"> Imię i nazwisko </label>
           </div>
           <div class="flex flex-row-reverse w-full items-center">
-            <input id="email" class="peer input" type="email" placeholder=" " />
+            <input
+              id="email"
+              class="peer input"
+              type="email"
+              placeholder=" "
+              v-model="email"
+            />
             <label for="email" class="mr-4 text-lg"> Email </label>
           </div>
           <div class="flex w-full items-center justify-end">
@@ -133,6 +153,7 @@
                 type="password"
                 autocomplete="new-password"
                 placeholder=" "
+                v-model="password"
               />
               <label
                 for="password"
@@ -156,7 +177,7 @@
               />
             </div>
           </div>
-          <button @click="authRegister" class="submit">Dołącz</button>
+          <button type="submit" class="submit">Dołącz</button>
         </form>
       </div>
     </div>
@@ -165,10 +186,19 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useStore } from "@/store";
 
 export default defineComponent({
   name: "NavbarComponent",
   components: {},
+  data() {
+    return {
+      email: "",
+      password: "",
+      name: "",
+      store: useStore(),
+    };
+  },
   setup() {
     const isShowLogin = ref(false);
     const isShowRegister = ref(false);
@@ -214,9 +244,20 @@ export default defineComponent({
     },
     authLogin() {
       alert("logowanie");
+      const formData = {
+        email: this.email,
+        password: this.password,
+      };
+      this.store.dispatch("login", formData);
     },
     authRegister() {
       alert("rejestracja");
+      const formData = {
+        email: this.email,
+        name: this.name,
+        password: this.password,
+      };
+      this.store.dispatch("register", formData);
     },
   },
 });

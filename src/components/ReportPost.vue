@@ -4,18 +4,18 @@
   >
     <div class="line">
       <h2 class="title">Gdzie?</h2>
-      <p>Osiedle na Wiśniowej 56, Warszawa</p>
+      <p>{{ post.location }}</p>
     </div>
     <div class="line">
       <h2 class="title">Co?</h2>
       <div class="text">
-        <p class="!text-main2 !text-opacity-70">Wandalizm</p>
-        <p>Wywalone smietniki</p>
+        <p class="!text-main2 !text-opacity-70">{{ post.category }}</p>
+        <p>{{ post.title }}</p>
       </div>
     </div>
     <div class="line">
       <h2 class="title">Opis</h2>
-      <p>Jacyś huligani popsuli wszysykie śmietniki na osiedlu!</p>
+      <p>{{ post.description }}</p>
     </div>
     <div class="flex justify-evenly">
       <button>Ta usterka istnieje</button>
@@ -29,6 +29,12 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ReportPost",
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+  },
 });
 </script>
 
