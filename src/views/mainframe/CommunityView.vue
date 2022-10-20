@@ -59,8 +59,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.labeled {
-  @apply text-main2 peer-checked:text-main transition-all translate-y-0 peer-checked:-translate-y-7 peer-checked:text-lg;
-}
-</style>
+<style lang="scss" scoped></style>
