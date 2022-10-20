@@ -37,7 +37,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "fault",
         name: "Fault",
-        component: () => import("@/views/mainframe/FaultView.vue"),
+        component: () => import("@/views/mainframe/ReportFaultView.vue"),
       },
       {
         path: "dashboard",

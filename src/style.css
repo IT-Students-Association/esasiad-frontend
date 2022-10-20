@@ -122,7 +122,3 @@ a {
     text-decoration: none;
     color: inherit;
 }
-
-button, input, select {
-    all: unset;
-}
