@@ -38,4 +38,8 @@ export default defineComponent({
     0 0 0 rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(7.5px);
 }
+
+.labeled {
+  @apply text-main2 peer-checked:text-main transition-all translate-y-0 peer-checked:-translate-y-7 peer-checked:text-lg;
+}
 </style>
