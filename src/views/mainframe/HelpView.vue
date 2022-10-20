@@ -1,5 +1,5 @@
 <template>
-  <div class="my-10 flex flex-col mx-10">
+  <div class="w-10/12 float-right my-10 flex flex-col mx-10">
     <div class="flex gap-5">
       <label>
         <input
@@ -25,7 +25,7 @@
         <div class="labeled">Prośby z okolicy</div>
       </label>
     </div>
-    <div class="flex justify-around flex-wrap gap-10">
+    <div class="flex flex-wrap gap-10">
       <HelpPost />
       <HelpPost />
       <HelpPost />

@@ -2,7 +2,7 @@
   <div
     class="flex bg-white !py-5 px-5 rounded-3xl flex-col w-full sm:max-w-[33%] box"
   >
-    <p class="font-light">e-Sąsiad HQ, 1 godzinę temu</p>
+    <p class="text-right font-light">e-Sąsiad HQ, 1 godzinę temu</p>
     <div class="flex items-center gap-1">
       <img src="@/assets/icons/user.svg" class="w-12 h-auto" alt="user" />
       <div>
