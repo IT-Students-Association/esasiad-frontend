@@ -75,11 +75,12 @@
       <h2 class="text-base text-main2 text-opacity-70 font-semibold">
         Pomóż nam zweryfikować usterki z okolicy
       </h2>
-      <div class="mt-3 flex flex-wrap gap-5">
-        <ReportPost />
-        <ReportPost />
-        <ReportPost />
-        <ReportPost />
+      <div
+        class="mt-3 flex flex-wrap gap-5"
+        v-for="post in posts"
+        :key="post.id"
+      >
+        <ReportPost :post="post" />
       </div>
     </div>
   </div>
@@ -88,10 +89,17 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import ReportPost from "@/components/ReportPost.vue";
+import { useStore } from "@/store";
 
 export default defineComponent({
   name: "ReportFaultView",
   components: { ReportPost },
+  data() {
+    const store = useStore();
+    return {
+      posts: store.state.reportPosts,
+    };
+  },
   mounted() {
     document.title = "e-Sąsiad | Zgłoś usterkę";
   },

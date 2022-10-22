@@ -12,33 +12,24 @@
         <div class="flex items-center gap-1">
           <img src="@/assets/icons/user.svg" class="w-12 h-auto" alt="user" />
           <div>
-            <p>Mateusz Pasek</p>
-            <p class="font-light">Potężny Sąsiad | 9999pkt</p>
+            <p>{{ post.user.name }}</p>
+            <p class="font-light">{{ rank }} | {{ post.user.points }}pkt</p>
           </div>
         </div>
-        <p class="font-light">e-Sąsiad HQ, 1 godzinę temu</p>
+        <p class="font-light">{{ post.location }}</p>
       </div>
       <div class="flex flex-col">
         <h2 class="text-lg font-semibold">
-          Testowa wiadomość Administracji serwisu e-Sąsiad
+          {{ post.title }}
         </h2>
         <p class="font-normal">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-          turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec
-          fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus
-          elit sed risus. Maecenas eget condimentum velit, sit amet feugiat
-          lectus. Class aptent taciti sociosqu ad litora torquent per conubia
-          nostra, per inceptos himenaeos. Praesent auctor purus luctus enim
-          egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex.
-          Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum
-          lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in
-          elementum tellus.
+          {{ post.content }}
         </p>
       </div>
       <div class="flex gap-5">
         <div class="flex items-center gap-2">
           <img src="@/assets/icons/like.svg" class="w-6 h-auto" alt="like" />
-          <p class="mt-1 font-light">55k polubień</p>
+          <p class="mt-1 font-light">Polubienia: {{ post.likesCount }}</p>
         </div>
         <div class="flex items-center gap-2">
           <img
@@ -46,7 +37,7 @@
             class="w-6 h-auto"
             alt="comments"
           />
-          <p class="mt-1 font-light">2k komentarzy</p>
+          <p class="mt-1 font-light">Komentarze: {{ post.commentsCount }}</p>
         </div>
       </div>
     </div>
@@ -55,8 +46,23 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useStore } from "@/store";
 
 export default defineComponent({
   name: "CommunityPost",
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+  },
+  data() {
+    const store = useStore();
+    const rank = store.getters.getRank(this.post.user.points);
+    console.log(rank);
+    return {
+      rank,
+    };
+  },
 });
 </script>

@@ -37,7 +37,7 @@
       <p
         class="mt-2 ml-auto mr-auto w-2/3 pt-2 pb-1 bg-accent2 text-center rounded-xl font-light"
       >
-        Początkujący Sąsiad | 40 pkt
+        {{ rank }} | {{ user.points }} pkt
       </p>
       <div class="flex items-center justify-center box-padding">
         <img
@@ -47,12 +47,14 @@
         />
         <div>
           <div class="mt-3 w-full text-center">
-            <p class="font-light">user@user.pl</p>
-            <p>Użytkownik Iksiński</p>
+            <p class="font-light">{{ user.email }}</p>
+            <p>{{ user.name }}</p>
           </div>
           <div class="mt-3 w-full text-center">
             <p class="font-light">Tak trzymaj!</p>
-            <p>Użytkownik, jesteś 79. w rankingu osiedlowym</p>
+            <p>
+              {{ user.name.split(" ")[0] }}, jesteś 79. w rankingu osiedlowym
+            </p>
           </div>
         </div>
       </div>
@@ -72,10 +74,40 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import SidebarNotification from "@/components/SidebarNotification.vue";
+import { useStore } from "@/store";
 
 export default defineComponent({
   name: "AppSidebar",
   components: { SidebarNotification },
+  data() {
+    const store = useStore();
+    const user = store.state.user;
+    return {
+      store,
+      user,
+      rank: store.getters.getRank(user?.points),
+    };
+  },
+  /*
+  async mounted() {
+    const link = this.store.state.apiLink + "user/me";
+    const response = await fetch(link, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token") as string,
+      },
+    });
+    if (response.ok) {
+      console.log("response ok");
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("auth", "true");
+    } else {
+      console.log("HTTP-Error: " + response.status);
+    }
+  },
+  */
   methods: {
     search() {
       console.log("search");
