@@ -38,7 +38,7 @@ Inicjatywa e-Sąsiad jest projektem mającym na celu tworzenie, podtrzymywanie o
 ## Co dalej?
 
 - Dodanie możliwości wysyłania wiadomości prywatnych pomiędzy użytkownikami, którzy sobie pomagają (w ramach funkcji Pomoc)
-- Dodanie możliwości wykorzystania funckji NFC do szybkiego przekazywania punktów
+- Dodanie możliwości wykorzystania NFC do szybkiego przekazywania punktów
 - Rozpoczęcie współpracy z lokalnymi instytucjami oraz spółdzielniami mieszkaniowymi, w celu ułatwienia komunikacji między nimi a mieszkańcami
 
 
