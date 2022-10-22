@@ -2,6 +2,7 @@ import { InjectionKey } from "vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 import router from "@/router";
 import { MinifyUser, User } from "@/schemas";
+import createPersistedState from "vuex-persistedstate";
 
 export interface CommunityPost {
   user: MinifyUser;
@@ -121,6 +122,11 @@ const isPwa = window.matchMedia("(display-mode: standalone)").matches;
 export const key: InjectionKey<Store<State>> = Symbol();
 
 export const store = createStore<State>({
+  plugins: [
+    createPersistedState({
+      storage: window.sessionStorage,
+    }),
+  ],
   state: {
     apiLink: "https://api.e-sasiad.pl/api/",
     auth: false,

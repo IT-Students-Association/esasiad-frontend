@@ -80,7 +80,8 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (store.state.user === null && from.path !== "/") {
+  if (store.state.user === null && router.currentRoute.value.name !== "Home") {
+    console.log("redirecting to home");
     if (localStorage.getItem("auth") === "true") {
       store.dispatch("fetchUser").then((r) => {
         if (r) {
