@@ -1,10 +1,12 @@
 <template>
   <MainNavbar />
-  <AppSidebar class="z-50" />
+  <AppSidebar class="z-50 portrait:hidden" />
   <div
-    class="flex justify-end w-screen h-screen relative w-screen background-mainframe overflow-x-hidden overflow-y-hidden"
+    class="flex justify-end w-screen min-h-screen relative w-screen background-mainframe overflow-x-hidden"
   >
-    <router-view class="float-right w-3/4 mt-28 mr-5" />
+    <router-view
+      class="float-right w-1/2 lg:w-1/2 xl:w-2/3 2xl:w-3/4 mt-28 mr-5 portrait:w-full portrait:mx-5"
+    />
   </div>
 </template>
 
@@ -23,10 +25,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.frame {
-  height: calc(100vh - 5.5rem);
-}
-
 .box {
   @apply bg-white rounded-2xl pb-3;
   box-shadow: 0 190px 76px rgba(0, 0, 0, 0.01), 0 107px 64px rgba(0, 0, 0, 0.05),
@@ -36,6 +34,6 @@ export default defineComponent({
 }
 
 .labeled {
-  @apply text-main2 peer-checked:text-main transition-all translate-y-0 peer-checked:-translate-y-7 peer-checked:text-lg;
+  @apply text-main2 peer-checked:text-main transition-all translate-y-0 peer-checked:-translate-y-7 peer-checked:text-lg portrait:peer-checked:translate-y-0 portrait:peer-checked:text-[1.2rem];
 }
 </style>

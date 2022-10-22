@@ -1,6 +1,6 @@
 <template>
   <div class="mt-10 flex flex-col mx-10">
-    <div class="flex gap-5">
+    <div class="flex gap-5 portrait:text-center">
       <label>
         <input
           type="radio"

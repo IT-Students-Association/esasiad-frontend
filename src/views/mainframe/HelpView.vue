@@ -1,5 +1,5 @@
 <template>
-  <div class="float-right my-10 flex flex-col mx-10">
+  <div class="float-right my-10 flex flex-col mx-10 portrait:pb-10">
     <div class="flex gap-5">
       <label>
         <input
@@ -26,6 +26,7 @@
       </label>
     </div>
     <div class="flex flex-wrap gap-10" v-for="post in posts" :key="post.id">
+      <HelpPost :post="post" />
       <HelpPost :post="post" />
     </div>
   </div>
