@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="mt-3 box-padding">
-        <p>Przejdź do forum:</p>
+        <p class="font-semibold">Przejdź do forum:</p>
         <div class="flex flex-col">
           <!-- tu będą się generować osiedla w których jest user -->
           <p>Osiedle nad Dolinką, Warszawa</p>
@@ -120,5 +120,9 @@ input {
 .header h2,
 .header input {
   @apply text-black opacity-60;
+}
+
+input {
+  all: unset;
 }
 </style>
