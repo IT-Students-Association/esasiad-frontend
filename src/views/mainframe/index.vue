@@ -1,14 +1,10 @@
 <template>
   <MainNavbar />
+  <AppSidebar class="z-50" />
   <div
-    class="flex items-end w-screen h-screen relative w-screen background-mainframe overflow-x-hidden overflow-y-hidden"
+    class="flex justify-end w-screen h-screen relative w-screen background-mainframe overflow-x-hidden overflow-y-hidden"
   >
-    <div class="flex flex-wrap w-full frame mx-16">
-      <AppSidebar />
-      <div class="flex-1 frame overflow-y-scroll">
-        <router-view />
-      </div>
-    </div>
+    <router-view class="float-right w-3/4 mt-28 mr-5" />
   </div>
 </template>
 

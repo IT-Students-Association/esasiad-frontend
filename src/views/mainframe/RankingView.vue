@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mx-auto w-11/12 my-10">
+  <div class="flex flex-col mx-auto my-10">
     <h2 class="text-lg text-main font-semibold">Ranking Sąsiadów</h2>
     <div class="flex gap-5 mt-7">
       <label>

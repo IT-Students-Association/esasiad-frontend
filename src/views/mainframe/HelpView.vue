@@ -1,5 +1,5 @@
 <template>
-  <div class="w-10/12 float-right my-10 flex flex-col mx-10">
+  <div class="float-right my-10 flex flex-col mx-10">
     <div class="flex gap-5">
       <label>
         <input
