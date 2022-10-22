@@ -205,6 +205,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.home-image {
+  @apply absolute z-20 w-[40vw] md:top-[20%] xl:top-[20%] 2xl:top-[10%] left-[55%] right-0 invisible md:visible;
+}
+
+.home-image-div {
+  @apply absolute -top-10 left-0 right-0 w-screen h-[200vh];
+}
+
 h1,
 h2,
 h3,
