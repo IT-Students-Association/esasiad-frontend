@@ -60,7 +60,7 @@
             >
               <div class="input flex justify-around">
                 <input
-                  class="peer w-full"
+                  class="peer w-full bg-white border-0 focus:outline-none"
                   id="password"
                   type="password"
                   autocomplete="new-password"
@@ -151,14 +151,15 @@
             <label for="password" class="mr-4 text-lg hidden sm:block">
               Hasło
             </label>
-            <div class="input flex justify-around">
+            <div id="passwrd-input" class="input flex justify-around">
               <input
-                class="peer w-full"
+                class="peer w-full bg-white border-0 focus:outline-none"
                 id="password"
                 type="password"
                 autocomplete="new-password"
                 placeholder=" "
                 v-model="password"
+                @keypress="checkPassword()"
                 required
               />
               <label
@@ -234,6 +235,7 @@ export default defineComponent({
   setup() {
     const captchaToken = ref("");
     const reCaptcha = useReCaptcha();
+    const inputs = document.querySelectorAll("input");
 
     async function recaptcha() {
       if (!reCaptcha) {
@@ -256,9 +258,15 @@ export default defineComponent({
     }
     function closeModalLogin() {
       isShowLogin.value = false;
+      inputs.forEach((input) => {
+        input.value = "";
+      });
     }
     function closeModalRegister() {
       isShowRegister.value = false;
+      inputs.forEach((input) => {
+        input.value = "";
+      });
     }
     return {
       recaptcha,
@@ -272,6 +280,23 @@ export default defineComponent({
     };
   },
   methods: {
+    checkPassword() {
+      const validation = new RegExp(
+        "^(?=.?[A-Z])(?=.?[a-z])(?=.*?[0-9]).{8,}$"
+      );
+      const password = document.getElementById("password") as HTMLInputElement;
+      const passwordDiv = document.getElementById(
+        "passwrd-input"
+      ) as HTMLInputElement;
+      const passwordLabel = document.querySelector("label[for='password']");
+      if (!validation.test(password.value)) {
+        passwordDiv.classList.add("error");
+        passwordLabel?.classList.add("error");
+      } else {
+        passwordDiv.classList.remove("error");
+        passwordLabel?.classList.remove("error");
+      }
+    },
     changePasswordVisibility() {
       const password = document.getElementById("password") as HTMLInputElement;
       const eyeOpen = document.getElementById("eye-open") as HTMLImageElement;
@@ -336,5 +361,9 @@ label {
 
 button.submit {
   @apply w-full sm:w-1/3 h-7 pt-3 bg-main text-white text-base text-center py-2 rounded-md shadow-sm hover:bg-main2 hover:shadow-lg transition-all;
+}
+
+.error {
+  @apply border-error text-error;
 }
 </style>
