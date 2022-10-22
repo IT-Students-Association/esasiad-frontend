@@ -83,10 +83,31 @@ export default defineComponent({
     const store = useStore();
     const user = store.state.user;
     return {
+      store,
       user,
-      rank: store.getters.getRank(user.points),
+      rank: store.getters.getRank(user?.points),
     };
   },
+  /*
+  async mounted() {
+    const link = this.store.state.apiLink + "user/me";
+    const response = await fetch(link, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token") as string,
+      },
+    });
+    if (response.ok) {
+      console.log("response ok");
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("auth", "true");
+    } else {
+      console.log("HTTP-Error: " + response.status);
+    }
+  },
+  */
   methods: {
     search() {
       console.log("search");

@@ -105,7 +105,10 @@
     <div
       class="bg-opacity-70 bg-[#000000] w-screen h-screen flex justify-center items-center"
     >
-      <div class="form bg-[#F7F7F7] p-10 rounded-2xl w-2/3 sm:w-1/3">
+      <div
+        class="form bg-[#F7F7F7] p-10 rounded-2xl w-2/3 sm:w-1/3"
+        v-if="!registered"
+      >
         <div class="flex items-start w-full">
           <h2 class="text-center text-xl sm:text-2xl text-main mx-auto mb-5">
             Zarejestruj się
@@ -129,6 +132,7 @@
               type="text"
               placeholder=" "
               v-model="name"
+              required
             />
             <label for="name" class="mr-4 text-lg"> Imię i nazwisko </label>
           </div>
@@ -139,6 +143,7 @@
               type="email"
               placeholder=" "
               v-model="email"
+              required
             />
             <label for="email" class="mr-4 text-lg"> Email </label>
           </div>
@@ -154,6 +159,7 @@
                 autocomplete="new-password"
                 placeholder=" "
                 v-model="password"
+                required
               />
               <label
                 for="password"
@@ -177,8 +183,32 @@
               />
             </div>
           </div>
-          <button type="submit" class="submit">Dołącz</button>
+          <p
+            id="password-error"
+            class="text-center text-error transition-all hidden"
+          >
+            Twoje hasło musi składać się z: <br />
+            minimum 8 znaków, 1 dużej litery, 1 cyfry
+          </p>
+          <button @click="recaptcha" class="submit">Dołącz</button>
         </form>
+      </div>
+      <div class="form bg-[#F7F7F7] p-10 rounded-2xl w-2/3 sm:w-1/3" v-else>
+        <div class="flex items-start">
+          <h2 class="text-center text-xl sm:text-2xl text-main mx-auto mb-5">
+            Rejestracja przebiegła pomyślnie
+          </h2>
+          <button @click="closeModalRegister">
+            <img
+              class="w-12"
+              src="@/assets/icons/cross-1.svg"
+              alt="close icon"
+            />
+          </button>
+        </div>
+        <p class="text-center text-base sm:text-lg">
+          Potwierdź stworzenie konta na swoim koncie mailowym
+        </p>
       </div>
     </div>
   </Modal>
@@ -187,6 +217,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { useStore } from "@/store";
+import { useReCaptcha } from "vue-recaptcha-v3";
 
 export default defineComponent({
   name: "NavbarComponent",
@@ -197,9 +228,22 @@ export default defineComponent({
       password: "",
       name: "",
       store: useStore(),
+      registered: false,
     };
   },
   setup() {
+    const captchaToken = ref("");
+    const reCaptcha = useReCaptcha();
+
+    async function recaptcha() {
+      if (!reCaptcha) {
+        return alert("could not get recaptcha");
+      }
+      await reCaptcha.recaptchaLoaded();
+      const token = await reCaptcha.executeRecaptcha("submit");
+      console.log(token);
+      captchaToken.value = token;
+    }
     const isShowLogin = ref(false);
     const isShowRegister = ref(false);
     function showModalLogin() {
@@ -217,12 +261,14 @@ export default defineComponent({
       isShowRegister.value = false;
     }
     return {
+      recaptcha,
       isShowLogin,
       isShowRegister,
       showModalLogin,
       showModalRegister,
       closeModalLogin,
       closeModalRegister,
+      captchaToken,
     };
   },
   methods: {
@@ -243,7 +289,6 @@ export default defineComponent({
       }
     },
     authLogin() {
-      alert("logowanie");
       const formData = {
         email: this.email,
         password: this.password,
@@ -251,13 +296,30 @@ export default defineComponent({
       this.store.dispatch("login", formData);
     },
     authRegister() {
-      alert("rejestracja");
-      const formData = {
-        email: this.email,
-        name: this.name,
-        password: this.password,
-      };
-      this.store.dispatch("register", formData);
+      const validation = new RegExp(
+        "^(?=.?[A-Z])(?=.?[a-z])(?=.*?[0-9]).{8,}$"
+      );
+      const error = document.getElementById("password-error") as HTMLElement;
+      if (validation.test(this.password)) {
+        setTimeout(async () => {
+          const name = this.name.split(" ")[0];
+          const surname = this.name.split(" ")[1];
+          const formData = {
+            name: name,
+            surname: surname,
+            email: this.email,
+            password: this.password,
+            captchaToken: this.captchaToken,
+          };
+          error.style.display = "none";
+          console.log(formData);
+          if (await this.store.dispatch("register", formData)) {
+            this.registered = true;
+          }
+        }, 1000);
+      } else {
+        error.style.display = "block";
+      }
     },
   },
 });

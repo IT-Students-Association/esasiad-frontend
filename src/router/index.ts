@@ -6,6 +6,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/app",
     name: "Mainframe",
     component: () => import("@/views/mainframe/index.vue"),
+    meta: {
+      public: false,
+      disableIfLoggedIn: false,
+    },
     children: [
       {
         path: "admin",
@@ -50,6 +54,19 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "Home",
     component: HomeView,
+    meta: {
+      public: true,
+      disableIfLoggedIn: false,
+    },
+  },
+  {
+    path: "/activate",
+    name: "Activate",
+    component: () => import("@/views/ActivateView.vue"),
+    meta: {
+      public: true,
+      disableIfLoggedIn: false,
+    },
   },
 ];
 
@@ -61,6 +78,18 @@ const router = createRouter({
   },
 });
 
-// TODO: add meta tags and make /app disabled if not logged in
+router.beforeEach((to, from, next) => {
+  if (!to.meta.public) {
+    if (localStorage.getItem("auth") === "true") {
+      next();
+    } else {
+      next("/");
+    }
+  }
+  if (localStorage.getItem("auth") === "true" && to.meta.disableIfLoggedIn) {
+    next("/app");
+  }
+  next();
+});
 
 export default router;

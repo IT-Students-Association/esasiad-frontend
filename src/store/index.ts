@@ -1,5 +1,6 @@
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
+import router from "@/router";
 
 export interface User {
   name: string;
@@ -109,10 +110,11 @@ const PointsTreshholdNames: Record<number, string> = {
 };
 
 export interface State {
+  apiLink: string;
   auth: boolean;
   admin: boolean;
   isPwa: boolean;
-  user: User;
+  user: User | null;
   communityPosts: Array<CommunityPost>;
   helpPosts: Array<HelpPost>;
   reportPosts: Array<ReportPost>;
@@ -127,6 +129,7 @@ export const key: InjectionKey<Store<State>> = Symbol();
 
 export const store = createStore<State>({
   state: {
+    apiLink: "https://api.e-sasiad.pl/api/",
     auth: false,
     admin: false,
     isPwa: isPwa,
@@ -157,11 +160,48 @@ export const store = createStore<State>({
     },
   },
   actions: {
-    login({ commit }, formData) {
-      console.log("login");
+    async login({ commit }, formData) {
+      const link = this.state.apiLink + "auth/login";
+      const response = await fetch(link, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        console.log("response ok");
+        const data = await response.json();
+        console.log(data.token);
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("auth", "true");
+        await router.push("/app");
+      } else {
+        console.log("HTTP-Error: " + response.status);
+        if (response.status == 401 || response.status == 409) {
+          alert("Niepoprawny login lub hasło");
+        }
+      }
     },
-    register({ commit }, formData) {
-      console.log("register");
+    async register({ commit }, formData) {
+      const link = this.state.apiLink + "auth/register";
+      const response = await fetch(link, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        console.log("response ok");
+        return true;
+      } else {
+        console.log("HTTP-Error: " + response.status);
+        if (response.status == 401) {
+          alert("Użytkownik o podanym adresie email już istnieje");
+        }
+        return false;
+      }
     },
   },
   modules: {},
