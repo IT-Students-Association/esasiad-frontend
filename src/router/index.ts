@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
+import { store } from "@/store";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -79,6 +80,15 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (store.state.user === null && from.path !== "/") {
+    if (localStorage.getItem("auth") === "true") {
+      store.dispatch("fetchUser").then((r) => {
+        if (r) {
+          next();
+        }
+      });
+    }
+  }
   if (!to.meta.public) {
     if (localStorage.getItem("auth") === "true") {
       next();

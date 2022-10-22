@@ -48,7 +48,7 @@
         <div>
           <div class="mt-3 w-full text-center">
             <p class="font-light">{{ user.email }}</p>
-            <p>{{ user.name }}</p>
+            <p>{{ user.name }} {{ user.surname }}</p>
           </div>
           <div class="mt-3 w-full text-center">
             <p class="font-light">Tak trzymaj!</p>
@@ -82,32 +82,12 @@ export default defineComponent({
   data() {
     const store = useStore();
     const user = store.state.user;
+    const rank = store.getters.getRank(user?.points);
     return {
-      store,
       user,
-      rank: store.getters.getRank(user?.points),
+      rank,
     };
   },
-  /*
-  async mounted() {
-    const link = this.store.state.apiLink + "user/me";
-    const response = await fetch(link, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: localStorage.getItem("token") as string,
-      },
-    });
-    if (response.ok) {
-      console.log("response ok");
-      const data = await response.json();
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("auth", "true");
-    } else {
-      console.log("HTTP-Error: " + response.status);
-    }
-  },
-  */
   methods: {
     search() {
       console.log("search");
