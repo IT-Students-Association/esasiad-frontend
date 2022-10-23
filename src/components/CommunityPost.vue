@@ -110,7 +110,6 @@ export default defineComponent({
   data() {
     const store = useStore();
     const rank = store.getters.getRank(this.post.user.points);
-    console.log(rank);
     return {
       rank,
     };

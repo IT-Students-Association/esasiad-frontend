@@ -178,7 +178,6 @@ export default defineComponent({
         "somewhere"
       ) as HTMLParagraphElement;
       const form = document.getElementById("form-location");
-      console.log(this.tried);
       if (!this.tried) {
         navigator.geolocation.getCurrentPosition(
           (position) => {

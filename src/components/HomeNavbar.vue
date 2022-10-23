@@ -242,9 +242,7 @@ export default defineComponent({
         return alert("could not get recaptcha");
       }
       await reCaptcha.recaptchaLoaded();
-      const token = await reCaptcha.executeRecaptcha("submit");
-      console.log(token);
-      captchaToken.value = token;
+      captchaToken.value = await reCaptcha.executeRecaptcha("submit");
     }
     const isShowLogin = ref(false);
     const isShowRegister = ref(false);
@@ -337,7 +335,6 @@ export default defineComponent({
             captchaToken: this.captchaToken,
           };
           error.style.display = "none";
-          console.log(formData);
           if (await this.store.dispatch("register", formData)) {
             this.registered = true;
           }
