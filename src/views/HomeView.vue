@@ -42,7 +42,7 @@
                 src="@/assets/icons/help.png"
                 alt="people helping each other icon"
               />
-              <h3 class="ml-4 mt-2 text-main2">Użytkowo xd</h3>
+              <h3 class="ml-4 mt-2 text-main2">Użytkowo</h3>
             </div>
             <h2 class="text-main2">Nowa definicja pomocy sąsiedzkiej.</h2>
             <p>
@@ -55,7 +55,7 @@
               społeczności tematy. Przygotowaliśmy również cyfrową przestrzeń,
               która znacząco usprawnia szybką pomoc sąsiedzką, o której
               dokładniej dowiedzieć się możesz
-              <a href="#" class="text-main2">tutaj.</a>
+              <a href="#help-nfc" class="text-main2">tutaj.</a>
             </p>
           </div>
           <img
@@ -71,7 +71,7 @@
           class="col-10 flex flex-col sm:flex-row justify-between items-center"
         >
           <img
-            class="w-full sm:w-5/12 mr-0 sm:mr-16"
+            class="w-full sm:w-1/3 mr-0 sm:mr-16"
             src="@/assets/images/neighbors.png"
             alt="app mockup"
           />
@@ -97,7 +97,7 @@
           </div>
         </div>
       </div>
-      <div class="row z-20 mt-64">
+      <div id="help-nfc" class="row z-20 mt-64">
         <div class="col-1" />
         <div
           class="col-10 flex flex-col sm:flex-row justify-between items-center"
@@ -109,16 +109,13 @@
                 src="@/assets/icons/help.png"
                 alt="people helping each other icon"
               />
-              <h3 class="ml-4 mt-2 text-main2">Użytkowo xd</h3>
+              <h3 class="ml-4 mt-2 text-main2">Korzystnie</h3>
             </div>
-            <h2 class="text-main2">
-              Rywalizuj ze swoimi sąsiadami.<br />
-              Zdrowo i korzystnie
-            </h2>
+            <h2 class="text-main2">Rywalizuj ze swoimi sąsiadami.</h2>
             <p>
               Funkcja pomocy sąsiedzkiej ma na celu ułatwienie oraz
               spopularyzowanie prostych, miłych, sąsiedzkich gestów. W zakładce
-              ,,Pomoc" możesz zapoznać się z prośbami z twojej okolicy, zgłosić
+              "Pomoc" możesz zapoznać się z prośbami z twojej okolicy, zgłosić
               chęć ich realizacji i w zamian za dobry uczynek - otrzymać punkty
               [pomocy?]. Dla posiadaczy funkcji NFC w smartfonie proces ten jest
               niesłychanie prosty - wystarczy przyłożyć swój smartfon do tego
