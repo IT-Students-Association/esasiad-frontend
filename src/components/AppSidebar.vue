@@ -25,7 +25,12 @@
           <p class="font-semibold">Przejdź do forum:</p>
           <div class="flex flex-col">
             <!-- tu będą się generować osiedla w których jest user -->
-            <p class="text-main2">Dodaj nowe osiedle</p>
+            <p
+              @click="showModalNeighborhoods"
+              class="cursor-pointer text-main2"
+            >
+              Dodaj nowe osiedle
+            </p>
             <p>Osiedle na Wiśniowej 56, Warszawa</p>
             <p>Osiedle na Wspólnej 21, Warszawa</p>
           </div>
@@ -70,27 +75,128 @@
         </div>
       </div>
     </div>
+    <Modal v-model="isShowNeighborhoods" :close="closeModalNeighborhoods">
+      <div
+        class="flex justify-center items-center w-screen h-screen bg-black bg-opacity-50"
+      >
+        <div class="box p-5 w-3/4 sm:w-1/4">
+          <div class="flex items-start w-full">
+            <h2 class="text-center text-lg sm:text-xl text-main mx-auto mb-5">
+              Dołącz do osiedla
+            </h2>
+            <button @click="closeModalNeighborhoods">
+              <img
+                class="w-8"
+                src="@/assets/icons/cross-1.svg"
+                alt="close icon"
+              />
+            </button>
+          </div>
+          <div class="flex flex-col gap-2">
+            <p id="somewhere" class="hidden"></p>
+            <form id="form-location" class="flex flex-col gap-2 hidden">
+              <p id="error" class="hidden">
+                Nie udało się uzyskać twojej lokalizacji, podaj adres osiedla
+              </p>
+              <input
+                class="border rounded-lg p-2"
+                type="text"
+                id="street"
+                placeholder="Ulica"
+              />
+              <input
+                class="border rounded-lg p-2"
+                type="text"
+                id="street"
+                placeholder="Miasto"
+              />
+              <input
+                class="border rounded-lg p-2"
+                type="text"
+                id="street"
+                placeholder="Kod pocztowy"
+              />
+            </form>
+            <input
+              @focus="locate"
+              type="text"
+              class="border rounded-lg p-2"
+              placeholder="Wpisz nazwę osiedla"
+            />
+            <button class="bg-main2 text-white rounded-lg p-2">
+              Stwórz i dołącz do osiedla
+            </button>
+          </div>
+        </div>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import SidebarNotification from "@/components/SidebarNotification.vue";
 import { useStore } from "@/store";
 
 export default defineComponent({
   name: "AppSidebar",
   components: { SidebarNotification },
+  setup() {
+    const isShowNeighborhoods = ref(false);
+    function showModalNeighborhoods() {
+      isShowNeighborhoods.value = true;
+    }
+    function closeModalNeighborhoods() {
+      isShowNeighborhoods.value = false;
+    }
+    return {
+      isShowNeighborhoods,
+      showModalNeighborhoods,
+      closeModalNeighborhoods,
+    };
+  },
   data() {
     const store = useStore();
     const user = store.state.user;
     const rank = store.getters.getRank(user?.points);
+    const location = undefined as any;
+    const tried = false;
     return {
+      location,
       user,
       rank,
+      tried,
+      address: "",
     };
   },
   methods: {
+    locate() {
+      const errorElem = document.getElementById(
+        "error"
+      ) as HTMLParagraphElement;
+      const somewhereElem = document.getElementById(
+        "somewhere"
+      ) as HTMLParagraphElement;
+      const form = document.getElementById("form-location");
+      console.log(this.tried);
+      if (!this.tried) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            this.location = position.coords;
+            somewhereElem.classList.remove("hidden");
+            somewhereElem.innerHTML =
+              "[funkcja nieukończona] Udało się! Twoja lokalizacja: <br />" +
+              this.location.longitude +
+              " " +
+              this.location.latitude;
+          },
+          (error) => {
+            form?.classList.remove("hidden");
+            errorElem?.classList.remove("hidden");
+          }
+        );
+      }
+    },
     search() {
       console.log("search");
     },
