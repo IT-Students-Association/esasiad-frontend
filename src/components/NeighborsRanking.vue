@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-10 mt-5">
-    <div class="flex translate-x-28">
+    <div class="flex translate-x-28 portrait:translate-x-24">
       <div
         class="flex flex-col items-center justify-center box !p-2 w-1/3 z-50"
       >
@@ -22,7 +22,7 @@
         </div>
       </div>
       <div
-        class="flex flex-col items-center justify-center box !p-2 w-1/3 z-30 -translate-x-96 translate-y-40"
+        class="flex flex-col items-center justify-center box !p-2 w-1/3 z-30 -translate-x-96 translate-y-40 portrait:-translate-x-64 portrait:translate-y-36"
       >
         <h2 class="font-medium text-lg">3.</h2>
         <h2 class="font-medium text-base text-center">Barbara Przekorzystna</h2>

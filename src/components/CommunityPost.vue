@@ -1,6 +1,13 @@
 <template>
-  <div class="flex flex-col gap-5 !py-5 px-5 rounded-3xl box">
-    <div class="flex flex-col w-full gap-2">
+  <div class="flex portrait:flex-col gap-5 !py-5 px-5 rounded-3xl box">
+    <div class="rounded-2xl h-full w-auto portrait:hidden">
+      <img
+        src="@/assets/images/placeholder.png"
+        class="rounded-2xl h-full w-full object-cover"
+        alt="placeholder"
+      />
+    </div>
+    <div class="flex flex-col w-3/4 portrait:w-full gap-2 portrait:gap-0">
       <!-- TODO: find a way to make this work -->
       <p class="font-light text-right">{{ post.location }}</p>
       <div class="flex items-center gap-1">
@@ -10,14 +17,14 @@
           <p class="font-light">{{ rank }} | {{ post.user.points }}pkt</p>
         </div>
       </div>
-      <div class="rounded-2xl h-1/3 w-auto">
+      <div class="rounded-2xl h-full w-auto mt-2 landscape:hidden">
         <img
           src="@/assets/images/placeholder.png"
-          class="rounded-2xl h-full w-full object-cover object-top"
+          class="rounded-2xl h-full w-full object-cover"
           alt="placeholder"
         />
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-col mt-2">
         <h2 class="text-lg font-semibold">
           {{ post.title }}
         </h2>

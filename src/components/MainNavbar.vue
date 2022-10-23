@@ -26,11 +26,11 @@
         <img src="@/assets/icons/settings.png" class="nav-icons" />
       </div>
       <div class="flex landscape:hidden">
-        <img
-          src="@/assets/icons/settings.png"
-          @click="showMenu()"
-          class="w-10 h-auto"
-        />
+        <div @click="showMenu" class="tham tham-e-squeeze tham-w-8">
+          <div class="tham-box">
+            <div class="tham-inner" />
+          </div>
+        </div>
         <!-- tu będzie pełnoprawny burger -->
       </div>
     </div>
@@ -56,7 +56,7 @@
         />
         <input
           type="text"
-          class="w-3/4 text-base"
+          class="w-3/4 text-base search"
           placeholder="Szukaj na forum"
         />
         <button>Szukaj</button>
@@ -116,8 +116,10 @@ export default defineComponent({
   },
   methods: {
     showMenu() {
+      const burgerMenu = document.querySelector(".tham");
       const menu = document.getElementById("burger-menu");
       menu?.classList.toggle("translate-x-0");
+      burgerMenu?.classList.toggle("tham-active");
     },
   },
 });

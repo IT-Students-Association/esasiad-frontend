@@ -1,7 +1,11 @@
 <template>
-  <div class="flex flex-col mx-auto my-10">
-    <h2 class="text-lg text-main font-semibold">Ranking Sąsiadów</h2>
-    <div class="flex gap-5 mt-7">
+  <div class="flex flex-col mx-5 my-10 portrait:!mx-5">
+    <h2 class="text-lg text-main font-semibold portrait:mt-3">
+      Ranking Sąsiadów
+    </h2>
+    <div
+      class="flex flex flex-wrap gap-x-5 mt-7 portrait:mt-0 portrait:items-start"
+    >
       <label>
         <input
           type="radio"
@@ -48,9 +52,9 @@
         <div class="labeled2">“Pod mosteczkiem”</div>
       </label>
     </div>
-    <div class="flex justify-between gap-5">
+    <div class="flex justify-around gap-5 portrait:flex-col-reverse">
       <NeighborsRanking />
-      <div class="flex flex-col gap-5 w-1/3">
+      <div class="flex flex-col gap-5 w-1/3 portrait:w-full portrait:mt-3">
         <div class="box px-5 py-4">
           <h2 class="text-lg">Dziękujemy, że jesteś</h2>
           <p class="text-sm">Sąsiedzi którzy otrzymali od Ciebie pomoc:</p>
@@ -86,6 +90,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .labeled2 {
-  @apply text-main2 transition-all translate-y-0 peer-checked:-translate-y-7 peer-checked:text-base;
+  @apply text-main2 transition-all translate-y-0 peer-checked:-translate-y-7 peer-checked:text-base peer-checked:text-main portrait:peer-checked:translate-y-0;
 }
 </style>

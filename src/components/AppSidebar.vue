@@ -6,7 +6,7 @@
       <div class="box">
         <div class="header flex gap-2 box-padding">
           <input
-            class="w-full text-base"
+            class="w-full text-base search"
             type="text"
             @change="search"
             placeholder="Szukaj na forum"
@@ -124,7 +124,7 @@ input {
   @apply text-black opacity-60;
 }
 
-input {
+input.search {
   all: unset;
 }
 </style>

@@ -1,7 +1,21 @@
 <template>
-  <div class="flex flex-col mx-auto my-10">
-    <h2 class="text-lg text-main font-semibold">Zgłoś usterkę</h2>
-    <div class="mt-3 bg-white box !py-5 px-5 rounded-3xl">
+  <div
+    class="flex flex-col mx-auto my-10 portrait:mt-24 portrait:mx-5 portrait:items-center"
+  >
+    <h2 class="text-lg text-main font-semibold portrait:hidden">
+      Zgłoś usterkę
+    </h2>
+    <div
+      class="flex w-3/4 box items-center justify-center gap-4 !p-2 landscape:hidden"
+    >
+      <h2 class="text-lg text-main font-semibold mt-1">Zgłoś usterkę</h2>
+      <img
+        src="@/assets/icons/add.svg"
+        alt="add icon"
+        class="h-12 bg-accent2 rounded-2xl"
+      />
+    </div>
+    <div class="mt-3 bg-white box !py-5 px-5 rounded-3xl portrait:hidden">
       <div class="flex gap-5">
         <form class="flex flex-col gap-5 w-5/12" @submit.prevent="reportFault">
           <div class="flex flex-col">
@@ -76,7 +90,7 @@
         Pomóż nam zweryfikować usterki z okolicy
       </h2>
       <div
-        class="mt-3 flex flex-wrap gap-5"
+        class="mt-3 flex flex-wrap gap-5 portrait:flex-col portrait:items-center"
         v-for="post in posts"
         :key="post.id"
       >
@@ -84,6 +98,7 @@
       </div>
     </div>
   </div>
+  <Modal v-model="isShowReport" :close="closeModalReport"> </Modal>
 </template>
 
 <script lang="ts">
@@ -98,6 +113,9 @@ export default defineComponent({
     const store = useStore();
     return {
       posts: store.state.reportPosts,
+      description: "",
+      title: "",
+      isShowReport: false,
     };
   },
   mounted() {

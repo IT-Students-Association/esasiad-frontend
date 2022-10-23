@@ -25,7 +25,11 @@
         <div class="labeled">Prośby z okolicy</div>
       </label>
     </div>
-    <div class="flex flex-wrap gap-10" v-for="post in posts" :key="post.id">
+    <div
+      class="flex flex-wrap gap-10 portrait:mt-5"
+      v-for="post in posts"
+      :key="post.id"
+    >
       <HelpPost :post="post" />
       <HelpPost :post="post" />
     </div>
