@@ -1,14 +1,11 @@
 <template>
-  <router-view />
+  <h1></h1>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "App",
-  components: {},
+  name: "AdminView",
 });
 </script>
-
-<style lang="scss"></style>

@@ -1,14 +1,9 @@
-<template>
-  <router-view />
-</template>
+<template>haha hihi</template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "App",
-  components: {},
+  name: "DashboardView",
 });
 </script>
-
-<style lang="scss"></style>
