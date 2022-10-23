@@ -91,8 +91,7 @@
               Forum sąsiedzkie daje wszystkim członkom sąsiedztwa możliwość
               integracji i zaangażowania w lokalne aktywności. Pozwala ono
               również publikować informacje z pierwszej ręki oraz dyskutować na
-              tematy ważne dla waszej społeczności. [jak forum będzie zrobione
-              to dopiszę więcej o jakihś technikaliach czy coś]
+              tematy ważne dla waszej społeczności.
             </p>
           </div>
         </div>
@@ -116,13 +115,13 @@
               Funkcja pomocy sąsiedzkiej ma na celu ułatwienie oraz
               spopularyzowanie prostych, miłych, sąsiedzkich gestów. W zakładce
               "Pomoc" możesz zapoznać się z prośbami z twojej okolicy, zgłosić
-              chęć ich realizacji i w zamian za dobry uczynek - otrzymać punkty
-              [pomocy?]. Dla posiadaczy funkcji NFC w smartfonie proces ten jest
+              chęć ich realizacji i w zamian za dobry uczynek - otrzymać punkty.
+              Dla posiadaczy funkcji NFC w smartfonie proces ten jest
               niesłychanie prosty - wystarczy przyłożyć swój smartfon do tego
               osoby proszącej o pomoc i Voilà! Oczywiście osoby nieposiadające
               tej funkcji również otrzymają zasłużone punkty - można to zrobić
               skanując specjalny kod QR otrzymany od osoby potrzebującej pomocy.
-              Jakby tego było mało, w zakładce ,,ranking" można znaleźć listę
+              Jakby tego było mało, w zakładce "ranking" można znaleźć listę
               najbardziej pomocnych sąsiadów, zarówno z twojej okolicy, jak i
               wszystkich na e-Sąsiedzie! Na co jeszcze czekasz? Już teraz
               sprawdź kto z twoich współmieszkańców potrzebuje szybkiej pomocy!
