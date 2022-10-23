@@ -1,5 +1,7 @@
 <template>
-  <div class="flex portrait:flex-col gap-5 !py-5 px-5 rounded-3xl box">
+  <div
+    class="flex portrait:flex-col gap-5 !py-5 px-5 rounded-3xl box landscape:hidden"
+  >
     <div class="rounded-2xl h-full w-auto portrait:hidden">
       <img
         src="@/assets/images/placeholder.png"
@@ -61,7 +63,7 @@
         <div class="flex items-center gap-1">
           <img src="@/assets/icons/user.svg" class="w-12 h-auto" alt="user" />
           <div>
-            <p>{{ post.user.name }}</p>
+            <p>{{ post.user.name }} {{ post.user.surname }}</p>
             <p class="font-light">{{ rank }} | {{ post.user.points }}pkt</p>
           </div>
         </div>
@@ -75,7 +77,7 @@
           {{ post.content }}
         </p>
       </div>
-      <div class="flex gap-5">
+      <div class="flex gap-5 mt-auto">
         <div class="flex items-center gap-2">
           <img src="@/assets/icons/like.svg" class="w-6 h-auto" alt="like" />
           <p class="mt-1 font-light">Polubienia: {{ post.likesCount }}</p>

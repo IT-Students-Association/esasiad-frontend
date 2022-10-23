@@ -49,6 +49,11 @@ const routes: Array<RouteRecordRaw> = [
         name: "Dashboard",
         component: () => import("@/views/mainframe/DashboardView.vue"),
       },
+      {
+        path: "yourhelp",
+        name: "YourHelp",
+        component: () => import("@/views/mainframe/YourHelpView.vue"),
+      },
     ],
   },
   {

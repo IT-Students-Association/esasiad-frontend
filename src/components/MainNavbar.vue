@@ -21,9 +21,14 @@
         </router-link>
       </div>
       <div class="flex sm:w-2/12 portrait:hidden">
-        <img src="@/assets/icons/notifs.png" class="nav-icons" />
-        <img src="@/assets/icons/helper.png" class="nav-icons" />
-        <img src="@/assets/icons/settings.png" class="nav-icons" />
+        <img src="@/assets/icons/notifs.png" class="nav-icons" alt="" />
+        <img
+          src="@/assets/icons/helper.png"
+          class="nav-icons"
+          @click="showModalHelp"
+          alt=""
+        />
+        <img src="@/assets/icons/settings.png" class="nav-icons" alt="" />
       </div>
       <div class="flex landscape:hidden">
         <div @click="showMenu" class="tham tham-e-squeeze tham-w-8">
@@ -31,7 +36,6 @@
             <div class="tham-inner" />
           </div>
         </div>
-        <!-- tu będzie pełnoprawny burger -->
       </div>
     </div>
   </nav>
@@ -64,7 +68,7 @@
       <div class="flex flex-col box !p-3">
         <p>Przejdź do osiedla:</p>
         <!-- tu będą się generować osiedla w których jest user -->
-        <p class="!text-s">Osiedle nad Dolinką, Warszawa</p>
+        <p class="text-main2">Dodaj nowe osiedle</p>
         <p class="!text-s">Osiedle na Wiśniowej 56, Warszawa</p>
         <p class="!text-s">Osiedle na Wspólnej 21, Warszawa</p>
       </div>
@@ -72,7 +76,7 @@
         <div class="flex flex-col items-center justify-around box !p-3">
           <p class="">Twoje punkty:</p>
           <p class="">{{ user.points }} pkt</p>
-          <router-link to="" class="bg-main2 p-2 rounded-lg">
+          <router-link to="/app/yourhelp" class="bg-main2 p-2 rounded-lg">
             <p class="text-white">Twoja pomoc</p>
           </router-link>
         </div>
@@ -93,10 +97,55 @@
       </div>
     </div>
   </div>
+  <Modal v-model="isShowHelp" :close="closeModalHelp" class="outline-0">
+    <div class="w-screen h-screen">
+      <div
+        id="help-menu"
+        class="p-10 w-2/12 bg-white float-right transition-all translate-x-96 rounded-bl-2xl mt-16"
+      >
+        <button class="float-right" @click="closeModalHelp">
+          <img class="w-8" src="@/assets/icons/cross-1.svg" alt="close icon" />
+        </button>
+        <h2>Zaakceptowane prośby</h2>
+        <div class="flex flex-col gap-5 mt-2">
+          <div class="flex flex-col bg-error bg-opacity-20 p-2 rounded-xl">
+            <p class="!text-sm text-error">Niezrealizowane</p>
+            <div class="flex items-center">
+              <img
+                src="@/assets/icons/user.svg"
+                class="h-8 w-auto"
+                alt="user"
+              />
+              <p class="!text-sm font-semibold">Jan Kowalski</p>
+            </div>
+            <p class="!text-sm">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptates, quod.
+            </p>
+          </div>
+          <div class="flex flex-col bg-error bg-opacity-20 p-2 rounded-xl">
+            <p class="!text-sm text-error">Niezrealizowane</p>
+            <div class="flex items-center">
+              <img
+                src="@/assets/icons/user.svg"
+                class="h-8 w-auto"
+                alt="user"
+              />
+              <p class="!text-sm font-semibold">Jan Kowalski</p>
+            </div>
+            <p class="!text-sm">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptates, quod.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Modal>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { useStore } from "@/store";
 
 export default defineComponent({
@@ -112,6 +161,28 @@ export default defineComponent({
       store,
       user: store.state.user,
       rank: store.getters.getRank(store.state.user?.points),
+    };
+  },
+  setup() {
+    const isShowHelp = ref(false);
+    function showModalHelp() {
+      isShowHelp.value = true;
+      setTimeout(() => {
+        const helpMenu = document.getElementById("help-menu");
+        helpMenu?.classList.remove("translate-x-96");
+      }, 100);
+    }
+    function closeModalHelp() {
+      const helpMenu = document.getElementById("help-menu");
+      helpMenu?.classList.add("translate-x-96");
+      setTimeout(() => {
+        isShowHelp.value = false;
+      }, 100);
+    }
+    return {
+      isShowHelp,
+      showModalHelp,
+      closeModalHelp,
     };
   },
   methods: {
@@ -136,5 +207,9 @@ a:not(.router-link-exact-active) {
 
 .router-link-exact-active {
   @apply font-semibold text-main2 transition-all;
+}
+
+.nav-icons {
+  @apply z-20 w-5 h-auto ml-auto cursor-pointer;
 }
 </style>

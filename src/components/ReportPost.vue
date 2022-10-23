@@ -18,7 +18,7 @@
       <p>{{ post.description }}</p>
     </div>
     <div class="flex justify-evenly items-center">
-      <button>Ta usterka istnieje</button>
+      <button class="button">Ta usterka istnieje</button>
       <p class="!text-error text-opacity-80">Usterka nie istnieje</p>
     </div>
   </div>

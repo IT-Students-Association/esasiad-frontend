@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col mx-5 my-10 portrait:!mx-5">
+  <div class="flex flex-col mx-5 my-10 portrait:mx-auto">
     <h2 class="text-lg text-main font-semibold portrait:mt-3">
       Ranking Sąsiadów
     </h2>
@@ -54,7 +54,7 @@
     </div>
     <div class="flex justify-around gap-5 portrait:flex-col-reverse">
       <NeighborsRanking />
-      <div class="flex flex-col gap-5 w-1/3 portrait:w-full portrait:mt-3">
+      <div class="flex flex-col gap-5 w-1/3 portrait:mt-3 portrait:w-fit">
         <div class="box px-5 py-4">
           <h2 class="text-lg">Dziękujemy, że jesteś</h2>
           <p class="text-sm">Sąsiedzi którzy otrzymali od Ciebie pomoc:</p>

@@ -6,7 +6,7 @@
       <div class="box">
         <div class="header flex gap-2 box-padding">
           <input
-            class="w-full text-base search"
+            class="!w-full text-base search"
             type="text"
             @change="search"
             placeholder="Szukaj na forum"
@@ -25,7 +25,7 @@
           <p class="font-semibold">Przejdź do forum:</p>
           <div class="flex flex-col">
             <!-- tu będą się generować osiedla w których jest user -->
-            <p>Osiedle nad Dolinką, Warszawa</p>
+            <p class="text-main2">Dodaj nowe osiedle</p>
             <p>Osiedle na Wiśniowej 56, Warszawa</p>
             <p>Osiedle na Wspólnej 21, Warszawa</p>
           </div>
