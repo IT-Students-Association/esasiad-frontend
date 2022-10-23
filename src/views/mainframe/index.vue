@@ -1,14 +1,12 @@
 <template>
   <MainNavbar />
+  <AppSidebar class="z-50 portrait:hidden" />
   <div
-    class="flex items-end w-screen h-screen relative w-screen background-mainframe overflow-x-hidden overflow-y-hidden"
+    class="flex justify-end w-full min-h-screen relative background-mainframe overflow-x-hidden"
   >
-    <div class="flex flex-wrap w-full frame mx-16">
-      <AppSidebar />
-      <div class="flex-1 frame overflow-y-scroll">
-        <router-view />
-      </div>
-    </div>
+    <router-view
+      class="w-1/2 lg:w-1/2 xl:w-2/3 2xl:w-3/4 mt-32 portrait:w-full portrait:mx-5 portrait:mt-20"
+    />
   </div>
 </template>
 
@@ -27,10 +25,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.frame {
-  height: calc(100vh - 5.5rem);
-}
-
 .box {
   @apply bg-white rounded-2xl pb-3;
   box-shadow: 0 190px 76px rgba(0, 0, 0, 0.01), 0 107px 64px rgba(0, 0, 0, 0.05),
@@ -40,6 +34,18 @@ export default defineComponent({
 }
 
 .labeled {
-  @apply text-main2 peer-checked:text-main transition-all translate-y-0 peer-checked:-translate-y-7 peer-checked:text-lg;
+  @apply text-main2 peer-checked:text-main transition-all translate-y-0 peer-checked:-translate-y-7 peer-checked:text-lg portrait:peer-checked:translate-y-0 portrait:peer-checked:text-[1.1rem];
+}
+
+.button {
+  @apply bg-main2 text-white text-center rounded-lg px-4 py-2;
+}
+
+.input {
+  @apply h-6 mt-2 w-[80%] bg-white px-4 py-2 border-2 border-solid border-main rounded-md shadow-sm focus:outline-none;
+}
+
+Modal label {
+  @apply mt-3 absolute sm:relative bg-white text-sm sm:text-lg -translate-y-5 sm:translate-y-0 bg-white transition-all left-20 sm:left-0  font-light sm:peer-focus:bg-none peer-focus:text-sm sm:peer-focus:text-lg peer-focus:-translate-y-5 sm:peer-focus:translate-y-0 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base sm:peer-placeholder-shown:text-lg;
 }
 </style>

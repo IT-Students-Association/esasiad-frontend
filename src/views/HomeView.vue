@@ -13,10 +13,10 @@
       <div class="row z-20">
         <div class="col-1" />
         <div class="col-4 transparent-black">
-          <h2>Lorem ipsum sit dolor amit.</h2>
-          <h2>
-            Dołącz do nas i zmieniaj z nami obraz osiedla 21 wieku. Lorem ipsum
-            dolor sit amet, consectetur...
+          <h2>Poznaj aplikację e-Sąsiad</h2>
+          <h2 class="mt-3">
+            Dzięki naszej aplikacji internetowej komunikacja, współpraca i inne
+            aspekty lokalnych społeczności stają się jeszcze prostsze.
           </h2>
         </div>
       </div>
@@ -24,14 +24,13 @@
         <div class="col-1" />
         <div class="col-2">
           <button
-            class="cursor-pointer bg-main2 py-4 w-full rounded-xl text-center text-white font-medium text-base"
-            onclick="alert('natka')"
+            class="cursor-pointer bg-main2 py-4 px-2 w-full rounded-xl text-center text-white font-medium text-base"
           >
-            Rozpocznij
+            <a href="#info">Dowiedz się więcej</a>
           </button>
         </div>
       </div>
-      <div class="row z-20 mt-16">
+      <div class="row z-20 mt-16" id="info">
         <div class="col-1" />
         <div
           class="col-10 flex flex-col sm:flex-row justify-between items-center"
@@ -47,16 +46,16 @@
             </div>
             <h2 class="text-main2">Nowa definicja pomocy sąsiedzkiej.</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-              turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-              nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-              tellus elit sed risus. Maecenas eget condimentum velit, sit amet
-              feugiat lectus. Class aptent taciti sociosqu ad litora torquent
-              per conubia nostra, per inceptos himenaeos. Praesent auctor purus
-              luctus enim egestas, ac scelerisque ante pulvinar. Donec ut
-              rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur
-              vel bibendum lorem. Morbi convallis convallis diam sit amet
-              lacinia. Aliquam in elementum tellus.
+              Potrzebujesz szybkiej pomocy? Chcesz coś oddać lub odsprzedać? A
+              może po prostu chcesz mieć szybki dostęp do aktualnych wydarzeń na
+              twoim osiedlu lub ulicy? Aplikacja e-Sąsiad umożliwia właśnie to!
+              Użytkownicy mają dostęp do forum, na którym każdy z mieszkańców
+              ich dzielnicy, osiedla lub bloku może dzielić się aktualnymi
+              informacjami lokalnymi oraz dyskutować na ważne dla ich
+              społeczności tematy. Przygotowaliśmy również cyfrową przestrzeń,
+              która znacząco usprawnia szybką pomoc sąsiedzką, o której
+              dokładniej dowiedzieć się możesz
+              <a href="#" class="text-main2">tutaj.</a>
             </p>
           </div>
           <img
@@ -89,16 +88,11 @@
               Poznaj swoich sąsiadów.
             </h2>
             <p class="text-center sm:text-right">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-              turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-              nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-              tellus elit sed risus. Maecenas eget condimentum velit, sit amet
-              feugiat lectus. Class aptent taciti sociosqu ad litora torquent
-              per conubia nostra, per inceptos himenaeos. Praesent auctor purus
-              luctus enim egestas, ac scelerisque ante pulvinar. Donec ut
-              rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur
-              vel bibendum lorem. Morbi convallis convallis diam sit amet
-              lacinia. Aliquam in elementum tellus.
+              Forum sąsiedzkie daje wszystkim członkom sąsiedztwa możliwość
+              integracji i zaangażowania w lokalne aktywności. Pozwala ono
+              również publikować informacje z pierwszej ręki oraz dyskutować na
+              tematy ważne dla waszej społeczności. [jak forum będzie zrobione
+              to dopiszę więcej o jakihś technikaliach czy coś]
             </p>
           </div>
         </div>
@@ -122,16 +116,19 @@
               Zdrowo i korzystnie
             </h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-              turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-              nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-              tellus elit sed risus. Maecenas eget condimentum velit, sit amet
-              feugiat lectus. Class aptent taciti sociosqu ad litora torquent
-              per conubia nostra, per inceptos himenaeos. Praesent auctor purus
-              luctus enim egestas, ac scelerisque ante pulvinar. Donec ut
-              rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur
-              vel bibendum lorem. Morbi convallis convallis diam sit amet
-              lacinia. Aliquam in elementum tellus.
+              Funkcja pomocy sąsiedzkiej ma na celu ułatwienie oraz
+              spopularyzowanie prostych, miłych, sąsiedzkich gestów. W zakładce
+              ,,Pomoc" możesz zapoznać się z prośbami z twojej okolicy, zgłosić
+              chęć ich realizacji i w zamian za dobry uczynek - otrzymać punkty
+              [pomocy?]. Dla posiadaczy funkcji NFC w smartfonie proces ten jest
+              niesłychanie prosty - wystarczy przyłożyć swój smartfon do tego
+              osoby proszącej o pomoc i Voilà! Oczywiście osoby nieposiadające
+              tej funkcji również otrzymają zasłużone punkty - można to zrobić
+              skanując specjalny kod QR otrzymany od osoby potrzebującej pomocy.
+              Jakby tego było mało, w zakładce ,,ranking" można znaleźć listę
+              najbardziej pomocnych sąsiadów, zarówno z twojej okolicy, jak i
+              wszystkich na e-Sąsiedzie! Na co jeszcze czekasz? Już teraz
+              sprawdź kto z twoich współmieszkańców potrzebuje szybkiej pomocy!
             </p>
           </div>
           <img
@@ -163,16 +160,13 @@
         <div class="col-2" />
         <div class="col-8 flex justify-center">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu
-            turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus
-            nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum
-            tellus elit sed risus. Maecenas eget condimentum velit, sit amet
-            feugiat lectus. Class aptent taciti sociosqu ad litora torquent per
-            conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus
-            enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex.
-            Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum
-            lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in
-            elementum tellus.
+            Jesteśmy małym zespołem deweloperskim z Zespołu Szkół Licealnych i
+            Technicznych Nr. 1 w Warszawie. Pomysł uczestnictwa w konkursie Hack
+            Heroes narodził się w szkolnym kole ITSA, które łączy uczniów
+            zafascynowanych informatyką oraz innymi nowoczesnymi technologiami.
+            Tworzymy mocno zgrany i zintegrowany zespół, w którym praca to
+            przyjemność a wspólne projekty - kolejne drogi w kierunku ulepszania
+            świata.
           </p>
         </div>
       </div>
@@ -205,6 +199,18 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+* {
+  scroll-behavior: smooth;
+}
+
+.home-image {
+  @apply absolute z-20 w-[40vw] md:top-[20%] xl:top-[20%] 2xl:top-[10%] left-[55%] right-0 invisible md:visible;
+}
+
+.home-image-div {
+  @apply absolute -top-10 left-0 right-0 w-screen h-[200vh];
+}
+
 h1,
 h2,
 h3,

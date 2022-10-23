@@ -1,15 +1,11 @@
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
 import router from "@/router";
-
-export interface User {
-  name: string;
-  email: string;
-  points: number;
-}
+import { MinifyUser, User } from "@/schemas";
+import createPersistedState from "vuex-persistedstate";
 
 export interface CommunityPost {
-  user: User;
+  user: MinifyUser;
   id: number;
   title: string;
   content: string;
@@ -20,7 +16,7 @@ export interface CommunityPost {
 }
 
 export interface HelpPost {
-  user: User;
+  user: MinifyUser;
   id: number;
   location: string;
   date: string;
@@ -35,17 +31,11 @@ export interface ReportPost {
   description: string;
 }
 
-const testowyUser: User = {
-  name: "Jan Kowalski",
-  email: "jankowalski@kowal.pl",
-  points: 11,
-};
-
 const testowePosty: Array<CommunityPost> = [
   {
     user: {
-      name: "Joanna Kowalska",
-      email: "joanna@joanna.pl",
+      name: "Joanna ",
+      surname: "Kowalska",
       points: 999,
     },
     id: 1,
@@ -59,8 +49,8 @@ const testowePosty: Array<CommunityPost> = [
   },
   {
     user: {
-      name: "Joanna Kowalska",
-      email: "joanna@joanna.pl",
+      name: "Joanna ",
+      surname: "Kowalska",
       points: 999,
     },
     id: 2,
@@ -76,7 +66,11 @@ const testowePosty: Array<CommunityPost> = [
 
 const testoweHelpPosty: Array<HelpPost> = [
   {
-    user: testowyUser,
+    user: {
+      name: "Joanna ",
+      surname: "Kowalska",
+      points: 999,
+    },
     id: 1,
     location: "Testowe Osiedle",
     date: "1666293549", //unix timestamp
@@ -128,12 +122,17 @@ const isPwa = window.matchMedia("(display-mode: standalone)").matches;
 export const key: InjectionKey<Store<State>> = Symbol();
 
 export const store = createStore<State>({
+  plugins: [
+    createPersistedState({
+      storage: window.sessionStorage,
+    }),
+  ],
   state: {
     apiLink: "https://api.e-sasiad.pl/api/",
     auth: false,
     admin: false,
     isPwa: isPwa,
-    user: testowyUser,
+    user: null,
     communityPosts: testowePosty,
     helpPosts: testoweHelpPosty,
     reportPosts: testoweReportPosty,
@@ -158,8 +157,31 @@ export const store = createStore<State>({
     setAuth: (state, auth) => {
       state.auth = auth;
     },
+    setUser: (state, user) => {
+      state.user = user;
+    },
   },
   actions: {
+    async fetchUser({ commit }) {
+      const link = this.state.apiLink + "user/me";
+      const response = await fetch(link, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("token") as string,
+        },
+      });
+      if (response.ok) {
+        console.log("response ok");
+        const data: User = await response.json();
+        console.log(data);
+        commit("setUser", data);
+      } else {
+        console.log("HTTP-Error: " + response.status);
+        alert("Twoja sesja wygasła. Zaloguj się ponownie.");
+        await router.push("/");
+      }
+    },
     async login({ commit }, formData) {
       const link = this.state.apiLink + "auth/login";
       const response = await fetch(link, {
@@ -175,6 +197,7 @@ export const store = createStore<State>({
         console.log(data.token);
         localStorage.setItem("token", data.token);
         localStorage.setItem("auth", "true");
+        await store.dispatch("fetchUser");
         await router.push("/app");
       } else {
         console.log("HTTP-Error: " + response.status);

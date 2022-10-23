@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
+import { store } from "@/store";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -48,6 +49,11 @@ const routes: Array<RouteRecordRaw> = [
         name: "Dashboard",
         component: () => import("@/views/mainframe/DashboardView.vue"),
       },
+      {
+        path: "yourhelp",
+        name: "YourHelp",
+        component: () => import("@/views/mainframe/YourHelpView.vue"),
+      },
     ],
   },
   {
@@ -79,6 +85,16 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (store.state.user === null && router.currentRoute.value.name !== "Home") {
+    console.log("redirecting to home");
+    if (localStorage.getItem("auth") === "true") {
+      store.dispatch("fetchUser").then((r) => {
+        if (r) {
+          next();
+        }
+      });
+    }
+  }
   if (!to.meta.public) {
     if (localStorage.getItem("auth") === "true") {
       next();
