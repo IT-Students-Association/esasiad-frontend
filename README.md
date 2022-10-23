@@ -1,16 +1,6 @@
-
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
-
-
 # e-Sąsiad
 
 Inicjatywa e-Sąsiad jest projektem mającym na celu tworzenie, podtrzymywanie oraz ułatwianie relacji sąsiedzkich, niezależnie od lokalizacji oraz wieku. Dzięki naszej aplikacji internetowej, komunikacja, współpraca oraz inne aspekty lokalnych społeczności stają się jeszcze prostsze.
-
-
-## Mockupy oraz screenshoty
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
 
 ## Wykorzystane technologie
 
